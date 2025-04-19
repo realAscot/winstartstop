@@ -1,34 +1,84 @@
-# Sammulung von Start- Shutdown Scripten
+# Sammlung von Start- und Shutdown-Skripten
 
-(C) 2025 Adam Skotarczak <adam@skotarczak.net> ([LICENZE](./LIZENSE))
+![Projektlogo](./assets/logo-alpha_250x250.png)
+
+> (C) 2025 Adam Skotarczak <adam@skotarczak.net>  
+> [Lizenz anzeigen](./LIZENSE)  
+
+## Inhalt:
+
+- [Sammlung von Start- und Shutdown-Skripten](#sammlung-von-start--und-shutdown-skripten)
+  - [Inhalt:](#inhalt)
+  - [Übersicht](#übersicht)
+  - [Skripte](#skripte)
+    - [`startup.bat`](#startupbat)
+      - [Beispiel:](#beispiel)
+      - [Funktionsweise:](#funktionsweise)
+      - [Installation:](#installation)
+    - [`shutdown.bat`](#shutdownbat)
+      - [Installation:](#installation-1)
+      - [Parameter:](#parameter)
+  - [Hinweise](#hinweise)
+
+## Übersicht
+
+Dieses Repository enthält Windows-Batchskripte zur Initialisierung und Aufräumroutine bei Systemstart und -shutdown.  
+Ziel ist es, temporäre Ressourcen effizient zu verwalten (z. B. Ramdisk, Temp-Ordner etc.).  
 
 ## Skripte
 
-[PLATZHALTER]
+### [`startup.bat`](./scripts/startup.bat)
+
+Erstellt beim Systemstart vordefinierte Verzeichnisse auf einem beliebigen Zielpfad (z. B. Ramdisk).  
+
+#### Beispiel:
+
+```cmd
+startup.bat R:\  
+```
+
+#### Funktionsweise:
+
+- Beim ersten Start wird automatisch die Datei `dirlist.txt` im selben Verzeichnis erzeugt.  
+- In `dirlist.txt` werden die Verzeichnisse aufgelistet, die erstellt werden sollen.  
+- Die angegebene Ramdisk muss zum Zeitpunkt des Skriptaufrufs vorhanden sein.  
+- Es wird eine Logdatei `ramdisk_log.txt` angelegt, die alle Aktionen protokolliert.  
+
+#### Installation:
+
+```text
+gpedit.msc → Computerkonfiguration → Windows-Einstellungen → Skripts (Starten)  
+```
+
+---
 
 ### [`shutdown.bat`](./scripts/shutdown.bat)
 
-Löscht diverse tempoäre Pfade unter windows. Sollte z.B beim Shutdown eingesetzt werden:
+Bereinigt temporäre Pfade unter Windows. Ideal für den Einsatz beim Herunterfahren des Systems.  
 
-#### Installation
+#### Installation:
 
-`gpedit.msc → Computerkonfiguration → Windows-Einstellungen → Skripts (Herunterfahren)`  
+```text
+gpedit.msc → Computerkonfiguration → Windows-Einstellungen → Skripts (Herunterfahren)  
+```
 
-![Screesnshot gpedit.msc](./assets/gpedit.png)  
+![Screenshot gpedit.msc](./assets/gpedit.png)  
 
-#### Parameter
+#### Parameter:
 
-| Aufruf                      | Wirkung                                              |  
-|-----------------------------|------------------------------------------------------|  
-| `shutdown.bat`              | Führe Cleanup aus, keine Logs                        |  
-| `shutdown.bat debug`        | Führe Cleanup aus + logge nach shutdownbat.log       |  
-| `shutdown.bat test`         | Simuliere nur, keine Daten werden gelöscht           |  
-| `shutdown.bat test debug`   | Simuliere + logge alles                              |  
+| Aufruf                    | Wirkung                                          |
+|---------------------------|--------------------------------------------------|
+| `shutdown.bat`            | Führt Cleanup aus, ohne Logging                  |
+| `shutdown.bat debug`      | Cleanup + Logausgabe in `shutdownbat.log`        |
+| `shutdown.bat test`       | Simulation (kein Löschen)                        |
+| `shutdown.bat test debug` | Simulation + Logging                             |
 
-### [`startup.bat`](./scripts/startup.bat)
+---
 
-Erstellt an einem beliebigen Pfad eine Verzeichnisebene.  
+## Hinweise
 
-> `./startup.bat R:\`
+- Die integrierte Warteschleife in `startup.bat` prüft bis zu 30 Sekunden lang, ob das angegebene Laufwerk (z. B. Ramdisk) verfügbar ist.  
+- Für erweiterte Steuerung kann zusätzlich der Windows-Taskplaner verwendet werden (z. B. zum verzögerten Start).  
+- Die Logdateien wachsen mit – regelmäßige Wartung empfohlen.  
 
-Das Skript erstellt beim ersten Aufruf die Datei `dirlist.txt` in gleichen Veerzeichnis in dem sich das Skript befindet. Diese Datei kann bearbeitet und weitere Verzeichnise hinzugefügt werden. Mit erneutem Aufruf werden diese Verzeichnise erstellt.
+---

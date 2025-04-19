@@ -1,0 +1,16 @@
+[2025-04-19_10:56:58] Ramdisk R:\ wurde gefunden.
+[2025-04-19_10:56:58] Bereits vorhanden: R:\Temp
+[2025-04-19_10:56:58] Bereits vorhanden: R:\ChromeProfile
+[2025-04-19_10:56:58] Bereits vorhanden: R:\ChromeCache
+[2025-04-19_10:56:58] Bereits vorhanden: R:\Downloads
+[2025-04-19_10:56:58] Bereits vorhanden: R:\Arbeitsverzeichnis
+[2025-04-19_10:56:58] Bereits vorhanden: R:\BraveCache-Ascot
+[2025-04-19_10:56:58] Verzeichniserstellung abgeschlossen.
+[2025-04-19_11:01:31] Ramdisk R:\ wurde gefunden.
+[2025-04-19_11:01:31] Erstellt: R:\Temp
+[2025-04-19_11:01:31] Erstellt: R:\ChromeProfile
+[2025-04-19_11:01:31] Erstellt: R:\ChromeCache
+[2025-04-19_11:01:31] Erstellt: R:\Downloads
+[2025-04-19_11:01:31] Erstellt: R:\Arbeitsverzeichnis
+[2025-04-19_11:01:31] Erstellt: R:\BraveCache-Ascot
+[2025-04-19_11:01:31] Verzeichniserstellung abgeschlossen.
