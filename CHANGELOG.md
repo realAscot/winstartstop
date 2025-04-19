@@ -1,5 +1,8 @@
 # CHANGELOG - WINSTARTSTOP
 
+- **2025/04/19 - v.0.2.1**  
+  - Erste produktive Version auf Github veröffentlicht.  
+
 - **2025/04/19 - v.0.1.1**  
   - **Überarbeitet:**  
     - `startup.bat`  

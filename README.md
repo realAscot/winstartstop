@@ -17,10 +17,10 @@ Diese Sammlung ist auf GitHUB unter der Adresse [https://github.com/realAscot/wi
       - [Beispiel:](#beispiel)
       - [Funktionsweise:](#funktionsweise)
       - [Installation:](#installation)
+  - [Hinweise](#hinweise)
     - [`shutdown.bat`](#shutdownbat)
       - [Installation:](#installation-1)
       - [Parameter:](#parameter)
-  - [Hinweise](#hinweise)
 
 ## Übersicht
 
@@ -36,6 +36,7 @@ Erstellt beim Systemstart vordefinierte Verzeichnisse auf einem beliebigen Zielp
 #### Beispiel:
 
 ```cmd
+
 startup.bat R:\  
 ```
 
@@ -48,9 +49,23 @@ startup.bat R:\
 
 #### Installation:
 
+> ⚠️ **Hinweis vorweg:**  
+  Microsoft liefert den Gruppenrichtlinien-Editor nur in den Pro, Enterprise und Education-Versionen von Windows aus – nicht in der Home-Edition.  Man kann das ganze alternativ aber auch über die Aufgabenplanung `taskschd.msc` steuern oder notfalls sogar über die gute alte `autostart.bat`
+
 ```text
+
 gpedit.msc → Computerkonfiguration → Windows-Einstellungen → Skripts (Starten)  
 ```
+
+Die Skripte aus dem Paket hier an beliebige Stelle kopieren und dort einpflegen.
+
+---
+
+## Hinweise
+
+- Die integrierte Warteschleife in `startup.bat` prüft bis zu 30 Sekunden lang, ob das angegebene Laufwerk (z. B. Ramdisk) verfügbar ist.  
+- Für erweiterte Steuerung kann zusätzlich der Windows-Taskplaner verwendet werden (z. B. zum verzögerten Start).  
+- Die Logdateien wachsen mit – regelmäßige Wartung empfohlen.  
 
 ---
 
@@ -68,19 +83,11 @@ gpedit.msc → Computerkonfiguration → Windows-Einstellungen → Skripts (Heru
 
 #### Parameter:
 
-| Aufruf                    | Wirkung                                          |
-|---------------------------|--------------------------------------------------|
-| `shutdown.bat`            | Führt Cleanup aus, ohne Logging                  |
-| `shutdown.bat debug`      | Cleanup + Logausgabe in `shutdownbat.log`        |
-| `shutdown.bat test`       | Simulation (kein Löschen)                        |
-| `shutdown.bat test debug` | Simulation + Logging                             |
-
----
-
-## Hinweise
-
-- Die integrierte Warteschleife in `startup.bat` prüft bis zu 30 Sekunden lang, ob das angegebene Laufwerk (z. B. Ramdisk) verfügbar ist.  
-- Für erweiterte Steuerung kann zusätzlich der Windows-Taskplaner verwendet werden (z. B. zum verzögerten Start).  
-- Die Logdateien wachsen mit – regelmäßige Wartung empfohlen.  
+| Aufruf                    | Wirkung                                          |  
+|---------------------------|--------------------------------------------------|  
+| `shutdown.bat`            | Führt Cleanup aus, ohne Logging                  |  
+| `shutdown.bat debug`      | Cleanup + Logausgabe in `shutdownbat.log`        |  
+| `shutdown.bat test`       | Simulation (kein Löschen)                        |  
+| `shutdown.bat test debug` | Simulation + Logging                             |  
 
 ---
