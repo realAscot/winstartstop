@@ -5,6 +5,8 @@
 > (C) 2025 Adam Skotarczak <adam@skotarczak.net>  
 > [Lizenz anzeigen](./LIZENSE)  
 
+Diese Sammlung ist auf GitHUB unter der Adresse [https://github.com/realAscot/winstartstop.git](https://github.com/realAscot/winstartstop.git) zu finden.  
+
 ## Inhalt:
 
 - [Sammlung von Start- und Shutdown-Skripten](#sammlung-von-start--und-shutdown-skripten)
